@@ -35,9 +35,16 @@ function App() {
     );
   }
 
+  const completedTasks = tasks.filter(
+    (task) => task.completed
+  ).length;
+
   return (
     <main>
       <h1>Task Manager</h1>
+
+      <p>Total sarcini: {tasks.length}</p>
+      <p>Finalizate: {completedTasks}</p>
 
       <TaskForm onAddTask={addTask} />
 
