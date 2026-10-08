@@ -4,6 +4,7 @@ import Task from "./components/Task";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   function addTask(taskName) {
     if (taskName.trim() === "") {
@@ -39,6 +40,18 @@ function App() {
     (task) => task.completed
   ).length;
 
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === "active") {
+      return !task.completed;
+    }
+
+    if (filter === "completed") {
+      return task.completed;
+    }
+
+    return true;
+  });
+
   return (
     <main>
       <h1>Task Manager</h1>
@@ -49,10 +62,24 @@ function App() {
       <TaskForm onAddTask={addTask} />
 
       <div>
+        <button onClick={() => setFilter("all")}>
+          Toate
+        </button>
+
+        <button onClick={() => setFilter("active")}>
+          Active
+        </button>
+
+        <button onClick={() => setFilter("completed")}>
+          Finalizate
+        </button>
+      </div>
+
+      <div>
         {tasks.length === 0 ? (
           <p>Nu există sarcini momentan.</p>
         ) : (
-          tasks.map((task) => (
+          filteredTasks.map((task) => (
             <Task
               key={task.id}
               task={task}
