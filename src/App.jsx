@@ -29,6 +29,12 @@ function App() {
     );
   }
 
+  function deleteTask(id) {
+    setTasks(
+      tasks.filter((task) => task.id !== id)
+    );
+  }
+
   return (
     <main>
       <h1>Task Manager</h1>
@@ -41,6 +47,7 @@ function App() {
             key={task.id}
             task={task}
             onToggle={toggleTask}
+            onDelete={deleteTask}
           />
         ))}
       </div>

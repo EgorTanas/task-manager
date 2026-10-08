@@ -1,4 +1,4 @@
-function Task({ task, onToggle }) {
+function Task({ task, onToggle, onDelete }) {
   return (
     <div>
       <input
@@ -14,6 +14,10 @@ function Task({ task, onToggle }) {
       >
         {task.title}
       </span>
+
+      <button onClick={() => onDelete(task.id)}>
+        Șterge
+      </button>
     </div>
   );
 }
