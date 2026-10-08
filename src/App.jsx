@@ -53,15 +53,17 @@ function App() {
   });
 
   return (
-    <main>
+    <main className="app">
       <h1>Task Manager</h1>
 
-      <p>Total sarcini: {tasks.length}</p>
-      <p>Finalizate: {completedTasks}</p>
+      <div className="stats">
+        <span>Total sarcini: {tasks.length}</span>
+        <span>Finalizate: {completedTasks}</span>
+      </div>
 
       <TaskForm onAddTask={addTask} />
 
-      <div>
+      <div className="filters">
         <button onClick={() => setFilter("all")}>
           Toate
         </button>
@@ -75,9 +77,11 @@ function App() {
         </button>
       </div>
 
-      <div>
+      <div className="task-list">
         {tasks.length === 0 ? (
-          <p>Nu există sarcini momentan.</p>
+          <p className="empty-message">
+            Nu există sarcini momentan.
+          </p>
         ) : (
           filteredTasks.map((task) => (
             <Task

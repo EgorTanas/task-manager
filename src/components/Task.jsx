@@ -1,6 +1,6 @@
 function Task({ task, onToggle, onDelete }) {
   return (
-    <div>
+    <div className="task">
       <input
         type="checkbox"
         checked={task.completed}
@@ -8,6 +8,7 @@ function Task({ task, onToggle, onDelete }) {
       />
 
       <span
+        className="task-title"
         style={{
           textDecoration: task.completed ? "line-through" : "none"
         }}
@@ -15,7 +16,10 @@ function Task({ task, onToggle, onDelete }) {
         {task.title}
       </span>
 
-      <button onClick={() => onDelete(task.id)}>
+      <button
+        className="delete-button"
+        onClick={() => onDelete(task.id)}
+      >
         Șterge
       </button>
     </div>
