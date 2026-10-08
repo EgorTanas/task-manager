@@ -49,14 +49,18 @@ function App() {
       <TaskForm onAddTask={addTask} />
 
       <div>
-        {tasks.map((task) => (
-          <Task
-            key={task.id}
-            task={task}
-            onToggle={toggleTask}
-            onDelete={deleteTask}
-          />
-        ))}
+        {tasks.length === 0 ? (
+          <p>Nu există sarcini momentan.</p>
+        ) : (
+          tasks.map((task) => (
+            <Task
+              key={task.id}
+              task={task}
+              onToggle={toggleTask}
+              onDelete={deleteTask}
+            />
+          ))
+        )}
       </div>
     </main>
   );
