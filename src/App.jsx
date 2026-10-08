@@ -19,6 +19,16 @@ function App() {
     setTasks([...tasks, newTask]);
   }
 
+  function toggleTask(id) {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, completed: !task.completed }
+          : task
+      )
+    );
+  }
+
   return (
     <main>
       <h1>Task Manager</h1>
@@ -30,6 +40,7 @@ function App() {
           <Task
             key={task.id}
             task={task}
+            onToggle={toggleTask}
           />
         ))}
       </div>
